@@ -108,7 +108,7 @@ setup_manifest_ref() {
         full_ref="refs/pull/${ref}/head"
     fi
     set_manifest_ref "${reponame}" "${full_ref}"
-    "${BASE}/post-github-status.sh" --repo "flatcar-linux/${reponame}" --ref "${full_ref}" --status pending
+    "${BASE}/post-github-status.sh" --repo "flatcar/${reponame}" --ref "${full_ref}" --status pending
 }
 
 if [[ -n "${SCRIPTS_REF}" ]]

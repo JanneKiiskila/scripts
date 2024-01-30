@@ -11,8 +11,8 @@ Options:
 This tool creates a Flatcar VDI image to be used with VirtualBox.
 "
 
-# Image signing key: buildbot@flatcar-linux.org
-GPG_KEY_URL="https://flatcar-linux.org/security/image-signing-key/Flatcar_Image_Signing_Key.pem"
+# Image signing key: buildbot@flatcar.org
+GPG_KEY_URL="https://flatcar.org/security/image-signing-key/Flatcar_Image_Signing_Key.pem"
 GPG_LONG_ID="E25D9AED0593B34A"
 GPG_KEY="$(wget -qO- $GPG_KEY_URL)"
 
@@ -57,10 +57,10 @@ IMAGE_NAME="${RAW_IMAGE_NAME}.bz2"
 DIGESTS_NAME="${IMAGE_NAME}.DIGESTS.asc"
 
 case ${VERSION_ID}  in
-    stable) BASE_URL="https://stable.release.flatcar-linux.net/amd64-usr/current" ;;
-    alpha) BASE_URL="https://alpha.release.flatcar-linux.net/amd64-usr/current" ;;
-    beta) BASE_URL="https://beta.release.flatcar-linux.net/amd64-usr/current" ;;
-    *) BASE_URL="https://alpha.release.flatcar-linux.net/amd64-usr/${VERSION_ID}" ;;
+    stable) BASE_URL="https://stable.release.flatcar.net/amd64-usr/current" ;;
+    alpha) BASE_URL="https://alpha.release.flatcar.net/amd64-usr/current" ;;
+    beta) BASE_URL="https://beta.release.flatcar.net/amd64-usr/current" ;;
+    *) BASE_URL="https://alpha.release.flatcar.net/amd64-usr/${VERSION_ID}" ;;
 esac
 
 IMAGE_URL="${BASE_URL}/${IMAGE_NAME}"

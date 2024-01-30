@@ -118,7 +118,7 @@ mv flatcar_test_update.gz tmp/
 if [ "${KOLA_TESTS}" = "*" ] || [ "$(echo "${KOLA_TESTS}" | grep 'cl.update.payload')" != "" ]; then
   # First test to update from the previous release, this is done before running the real kola suite so that the qemu-latest symlink still points to the full run
   rm -f flatcar_production_image.bin.bz2
-  curl -fsSLO --retry-delay 1 --retry 60 --retry-connrefused --retry-max-time 60 --connect-timeout 20 "https://${GROUP}.release.flatcar-linux.net/${BOARD}/current/flatcar_production_image.bin.bz2"
+  curl -fsSLO --retry-delay 1 --retry 60 --retry-connrefused --retry-max-time 60 --connect-timeout 20 "https://${GROUP}.release.flatcar.net/${BOARD}/current/flatcar_production_image.bin.bz2"
   mv flatcar_production_image.bin.bz2 tmp/flatcar_production_image_previous.bin.bz2
   enter lbunzip2 -k -f /mnt/host/source/tmp/flatcar_production_image_previous.bin.bz2
   enter sudo timeout --signal=SIGQUIT "${TIMEOUT}" kola run \

@@ -262,7 +262,7 @@ download_image_url() {
         download_path="${FLAGS_download_path%%/}"
     elif [[ "${download_root}" == *flatcar-jenkins* ]]; then
         download_channel="${download_root##*/}"
-        download_root="gs://${download_channel}.release.flatcar-linux.net"
+        download_root="gs://${download_channel}.release.flatcar.net"
         # Official release download paths don't include the boards directory
         download_path="${download_root%%/}/${BOARD}/${FLATCAR_VERSION}"
     else

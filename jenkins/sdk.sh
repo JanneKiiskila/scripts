@@ -19,7 +19,7 @@ mkdir -p --mode=0700 "${GNUPGHOME}/private-keys-v1.d/"
 
 if [[ "${SEED_SDK_VERSION}" == alpha ]]
 then
-	SEED_SDK_VERSION=$(curl -s -S -f -L "https://alpha.release.flatcar-linux.net/amd64-usr/current/version.txt" | grep -m 1 FLATCAR_SDK_VERSION= | cut -d = -f 2- | tee /dev/stderr)
+	SEED_SDK_VERSION=$(curl -s -S -f -L "https://alpha.release.flatcar.net/amd64-usr/current/version.txt" | grep -m 1 FLATCAR_SDK_VERSION= | cut -d = -f 2- | tee /dev/stderr)
 	if [[ -z "${SEED_SDK_VERSION}" ]]
 	then
 		echo "Unexpected: Alpha release SDK version not found"

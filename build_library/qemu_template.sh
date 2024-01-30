@@ -220,7 +220,7 @@ if [ -n "${VM_PFLASH_RO}" ] && [ -n "${VM_PFLASH_RW}" ]; then
 fi
 
 if [ -n "${IGNITION_CONFIG_FILE}" ]; then
-    set -- -fw_cfg name=opt/org.flatcar-linux/config,file="${IGNITION_CONFIG_FILE}" "$@"
+    set -- -fw_cfg name=opt/org.flatcar/config,file="${IGNITION_CONFIG_FILE}" "$@"
 fi
 
 case "${VM_BOARD}" in

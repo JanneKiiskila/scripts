@@ -141,7 +141,7 @@ else
   export CHANNEL_A="${CHANNEL_BASE}"
 fi
 
-export VERSION_A=$(curl -s -S -f -L "https://${CHANNEL_A}.release.flatcar-linux.net/${BOARD}/current/version.txt" | grep -m 1 "FLATCAR_VERSION=" | cut -d "=" -f 2)
+export VERSION_A=$(curl -s -S -f -L "https://${CHANNEL_A}.release.flatcar.net/${BOARD}/current/version.txt" | grep -m 1 "FLATCAR_VERSION=" | cut -d "=" -f 2)
 
 if [ "${GROUP}" = "developer" ]; then
   export CHANNEL_B="developer"
@@ -151,7 +151,7 @@ else
 fi
 echo "Image differences compared to ${CHANNEL_A} ${VERSION_A}:"
 rm -f package-diff
-curl -fsSLO --retry-delay 1 --retry 60 --retry-connrefused --retry-max-time 60 --connect-timeout 20 "https://raw.githubusercontent.com/flatcar-linux/flatcar-build-scripts/master/package-diff"
+curl -fsSLO --retry-delay 1 --retry 60 --retry-connrefused --retry-max-time 60 --connect-timeout 20 "https://raw.githubusercontent.com/flatcar/flatcar-build-scripts/master/package-diff"
 chmod +x package-diff
 echo "Package updates, compared to ${CHANNEL_A} ${VERSION_A}:"
 FILE=flatcar_production_image_packages.txt ./package-diff "${VERSION_A}" "${FLATCAR_VERSION}"
@@ -165,5 +165,5 @@ echo
 echo "Image file size change (includes /boot, /usr and the default rootfs partitions), compared to ${CHANNEL_A} ${VERSION_A}:"
 FILE=flatcar_production_image_contents.txt CALCSIZE=1 ./package-diff "${VERSION_A}" "${FLATCAR_VERSION}"
 echo
-BASE_PATH="https://bucket.release.flatcar-linux.net/$(echo $UPLOAD_ROOT | sed 's|gs://||g')/boards/${BOARD}/${FLATCAR_VERSION}"
+BASE_PATH="https://bucket.release.flatcar.net/$(echo $UPLOAD_ROOT | sed 's|gs://||g')/boards/${BOARD}/${FLATCAR_VERSION}"
 echo "Image URL: ${BASE_PATH}/flatcar_production_image.bin.bz2"
